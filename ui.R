@@ -1,7 +1,8 @@
 library(shiny)
 library(dplyr)
 
-stopgap <- read.delim("data/smallgap.txt") %>%
+load("../data/stopgap.RData")
+stopgap <- stopgap %>%
 	select(gene, msh, snp.ld, pvalue, gene.score, gene.rank.min, pubmedid) %>%
 	rename(Gene=gene, Trait=msh, SNP=snp.ld, Pvalue=pvalue, GeneScore=gene.score, GeneRank=gene.rank.min, PubMedID=pubmedid) %>%
 	unique
