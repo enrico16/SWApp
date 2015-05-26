@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
   output$table <- renderDataTable({
       
     data <- stopgap %>%
-        filter(Pvalue >= input$pvalue[1] & Pvalue <= input$pvalue[2],
+        filter(PValue >= input$pvalue[1] & PValue <= input$pvalue[2],
                GeneRank >= input$generank[1] & GeneRank <= input$generank[2],
                GeneScore >= input$genescore[1] & GeneScore <= input$genescore[2])
     

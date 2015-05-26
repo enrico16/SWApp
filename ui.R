@@ -20,7 +20,7 @@ shinyUI(
             br(),
             
             sliderInput("pvalue",
-                        "Pvalue:",
+                        "PValue:",
                         min = 0,
                         max = 1e-2,
                         value = c(0, 1e-2),
