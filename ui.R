@@ -13,7 +13,7 @@ shinyUI(
                      h1(strong("SWApp")),
                      h3(strong("STOPGAP Web App")),
                      
-                     p(strong("Swapp"), "is a simple web application that makes using and querying",
+                     p(strong("SWApp"), "is a simple web application that makes using and querying",
                        a(strong("STOPGAP"), href="https://connect.gsk.com/sites/genetics/GeneticsWIKI/Wiki%20Pages/STOPGAP2.aspx"),
                        "easier."),
                      
