@@ -1,28 +1,37 @@
 library(shiny)
-library(dplyr)
+library(RMySQL)
 
-stopgap <- readRDS("data/smallgap.rds")
+con <- dbConnect(MySQL(), user="ef884766", host="localhost", dbname="stopgap")
 
 shinyServer(function(input, output) {
   
   output$table <- renderDataTable({
-      
-    data <- stopgap %>%
-        filter(PValue >= input$pvalue[1] & PValue <= input$pvalue[2],
-               GeneRank >= input$generank[1] & GeneRank <= input$generank[2],
-               GeneScore >= input$genescore[1] & GeneScore <= input$genescore[2])
-    
-    if (input$gene != "All"){
-      data <- data[data$Gene == input$gene,]
+
+    if (input$gene != "All") {
+        sqlCode <- paste0("select * from swapp where PValue >=", input$pvalue[1], " and PValue <=", input$pvalue[2],
+                        " and GeneRank >=", input$generank[1], " and GeneRank <=", input$generank[2],
+                        " and GeneScore >=", input$genescore[1], " and GeneRank <=", input$genescore[2],
+                        " and Gene =", input$gene, ";")
     }
-    if (input$trait != "All"){
-      data <- data[data$Trait == input$trait,]
+    if (input$trait != "All") {
+        sqlCode <- paste0("select * from swapp where PValue >=", input$pvalue[1], " and PValue <=", input$pvalue[2],
+                        " and GeneRank >=", input$generank[1], " and GeneRank <=", input$generank[2],
+                        " and GeneScore >=", input$genescore[1], " and GeneRank <=", input$genescore[2],
+                        " and Trait =", input$trait, ";")
     }
-    if (input$snp != "All"){
-      data <- data[data$SNP == input$snp,]
+    if (input$snp != "All") {
+        sqlCode <- paste0("select * from swapp where PValue >=", input$pvalue[1], " and PValue <=", input$pvalue[2],
+                        " and GeneRank >=", input$generank[1], " and GeneRank <=", input$generank[2],
+                        " and GeneScore >=", input$genescore[1], " and GeneRank <=", input$genescore[2],
+                        " and SNP =", input$snp, ";")
+    } else {
+        sqlCode <- paste0("select * from swapp where PValue >=", input$pvalue[1], " and PValue <=", input$pvalue[2],
+                        " and GeneRank >=", input$generank[1], " and GeneRank <=", input$generank[2],
+                        " and GeneScore >=", input$genescore[1], " and GeneRank <=", input$genescore[2], ";")
     }
-    
-    data
+
+    data <- dbGetQuery(con, sqlCode)
+
   },
   options = list(pageLength = 10))
 })

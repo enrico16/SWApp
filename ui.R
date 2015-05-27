@@ -1,5 +1,4 @@
 library(shiny)
-library(dplyr)
 
 stopgap <- readRDS("data/smallgap.rds")
 
