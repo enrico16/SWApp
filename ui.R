@@ -1,4 +1,5 @@
 library(shiny)
+library(DT)
 
 stopgap <- readRDS("data/smallgap.rds")
 
@@ -18,13 +19,27 @@ shinyUI(
                      
             br(),
             
-            sliderInput("pvalue",
+            #sliderInput("pvalue",
+            #            "PValue:",
+            #            min = 0,
+            #            max = 1e-2,
+            #            value = c(0, 1e-2),
+            #            step = 1e-3,
+            #            sep = ""),
+
+            selectInput("pvalue",
                         "PValue:",
-                        min = 0,
-                        max = 1e-2,
-                        value = c(0, 1e-2),
-                        step = 1e-3,
-                        sep = ""),
+                        choices = list(1e-100,
+                                       1e-50,
+                                       1e-30,
+                                       1e-20,
+                                       1e-10,
+                                       1e-8,
+                                       1e-5,
+                                       0.001,
+                                       0.01,
+                                       0.05),
+                        selected=1e-8),
             
             sliderInput("genescore",
                         "GeneScore:",
@@ -38,6 +53,9 @@ shinyUI(
                         max = 100,
                         value = c(1, 100)),
             
+            submitButton("Submit"),
+            
+            br(),
             br(),
             
             p("Swapp is developed by",
@@ -50,6 +68,7 @@ shinyUI(
         ),
         
         mainPanel(
+
             fluidRow(
               column(4, 
                   selectInput("gene", 
@@ -70,8 +89,14 @@ shinyUI(
                                 unique(sort(as.character(stopgap$SNP)))))
               )        
             ),
+
             fluidRow(
-              dataTableOutput(outputId="table")
+                DT::dataTableOutput("table")
+            ),
+
+            fluidRow(
+                downloadButton("download",
+                               "Download")
             )
         )
     )
