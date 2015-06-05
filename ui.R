@@ -46,7 +46,7 @@ shinyUI(
             
             br(),
             
-            p("Swapp is developed by",
+            p("SWApp is developed by",
               a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
               "using",
               a(strong("Shiny"), href="http://shiny.rstudio.com/")),
@@ -60,19 +60,19 @@ shinyUI(
               column(4, 
                   selectInput("gene", 
                               "Gene:", 
-                              c("All", 
+                              c("%", 
                                 unique(sort(as.character(stopgap$Gene)))))
               ),
               column(4, 
                   selectInput("trait", 
                               "Trait:", 
-                              c("All", 
+                              c("%", 
                                 unique(sort(as.character(stopgap$Trait)))))
               ),
               column(4, 
                   selectInput("snp", 
                               "SNP:", 
-                              c("All", 
+                              c("%", 
                                 unique(sort(as.character(stopgap$SNP)))))
               )        
             ),
