@@ -58,13 +58,17 @@ shinyUI(
 
                   tabsetPanel(
 
-                              tabPanel("Best LD",
+                              tabPanel("STOPGAP",
                                        DT::dataTableOutput("table1"),
                                        downloadButton("download1", "Download")),
 
-                              tabPanel("Gene MeSH",
+                              tabPanel("STOPGAP Best LD",
                                        DT::dataTableOutput("table2"),
-                                       downloadButton("download2", "Download"))
+                                       downloadButton("download2", "Download")),
+
+                              tabPanel("STOPGAP Gene MeSH",
+                                       DT::dataTableOutput("table3"),
+                                       downloadButton("download3", "Download"))
 
                               )
                   )

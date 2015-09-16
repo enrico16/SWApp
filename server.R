@@ -6,10 +6,10 @@ con <- dbConnect(MySQL(), user="ef884766", host="localhost", dbname="swapp")
 
 shinyServer(function(input, output) {
                 
-                # bestld
+                # STOPGAP
                 sqlOutput1 <- reactive({
                     
-                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.bestld",
+                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.swapp",
                                       " where PValue < ", input$pvalue,
                                       " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
                                       " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
@@ -25,10 +25,10 @@ shinyServer(function(input, output) {
                                            write.table(sqlOutput1()[rows, ], file, sep="\t", quote=FALSE, col.names=TRUE, row.names=FALSE)
                 })
                 
-                # gene.mesh
+                # STOPGAP Best LD
                 sqlOutput2 <- reactive({
                     
-                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.gene_mesh",
+                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.swappbestld",
                                       " where PValue < ", input$pvalue,
                                       " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
                                       " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
@@ -42,6 +42,25 @@ shinyServer(function(input, output) {
                 output$download2 <- downloadHandler("SWApp.txt", content = function(file) {
                                            rows <- input$table2_rows_all
                                            write.table(sqlOutput2()[rows, ], file, sep="\t", quote=FALSE, col.names=TRUE, row.names=FALSE)
+                })
+                
+                # STOPGAP Gene MeSH
+                sqlOutput3 <- reactive({
+                    
+                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.swappgenemesh",
+                                      " where PValue < ", input$pvalue,
+                                      " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
+                                      " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
+                                      ";")
+                    dbGetQuery(con, sqlCode)
+
+                })
+                
+                output$table3 <- DT::renderDataTable(sqlOutput3(), server=TRUE, rownames=TRUE, filter="top", options=list(pageLength=10))
+                
+                output$download3 <- downloadHandler("SWApp.txt", content = function(file) {
+                                           rows <- input$table3_rows_all
+                                           write.table(sqlOutput3()[rows, ], file, sep="\t", quote=FALSE, col.names=TRUE, row.names=FALSE)
                 })
 
 })
