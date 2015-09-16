@@ -1,8 +1,6 @@
 library(shiny)
 library(DT)
 
-stopgap <- readRDS("data/smallgap.rds")
-
 shinyUI(
   fluidPage(
     titlePanel(title="", windowTitle="SWApp"),
@@ -19,14 +17,6 @@ shinyUI(
                      
             br(),
             
-            #sliderInput("pvalue",
-            #            "PValue:",
-            #            min = 0,
-            #            max = 1e-2,
-            #            value = c(0, 1e-2),
-            #            step = 1e-3,
-            #            sep = ""),
-
             selectInput("pvalue",
                         "PValue:",
                         choices = list(1e-100,
@@ -45,20 +35,20 @@ shinyUI(
                         "GeneScore:",
                         min = 0,
                         max = 20,
-                        value = c(0, 20)),
+                        value = c(5, 20)),
             
             sliderInput("generank",
                         "GeneRank:",
                         min = 1,
                         max = 100,
-                        value = c(1, 100)),
+                        value = c(1, 10)),
             
             submitButton("Submit"),
             
             br(),
             br(),
             
-            p("Swapp is developed by",
+            p("SWApp is developed by",
               a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
               "using",
               a(strong("Shiny"), href="http://shiny.rstudio.com/")),
@@ -69,37 +59,18 @@ shinyUI(
         
         mainPanel(
 
-            fluidRow(
-              column(4, 
-                  selectInput("gene", 
-                              "Gene:", 
-                              c("All", 
-                                unique(sort(as.character(stopgap$Gene)))))
-              ),
-              column(4, 
-                  selectInput("trait", 
-                              "Trait:", 
-                              c("All", 
-                                unique(sort(as.character(stopgap$Trait)))))
-              ),
-              column(4, 
-                  selectInput("snp", 
-                              "SNP:", 
-                              c("All", 
-                                unique(sort(as.character(stopgap$SNP)))))
-              )        
-            ),
+                  tabsetPanel(
 
-            fluidRow(
-                DT::dataTableOutput("table")
-            ),
+                              tabPanel("Best LD",
+                                       DT::dataTableOutput("table1"),
+                                       downloadButton("download1", "Download"),
+                                       verbatimTextOutput('x')),
 
-            fluidRow(
-                downloadButton("download",
-                               "Download")
-            )
+                              tabPanel("Gene MeSH",
+                                       DT::dataTableOutput("table2"),
+                                       downloadButton("download2", "Download"))
+
+                              )
+                  )
         )
-    )
-  )
-)
-
+    ))
