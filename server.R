@@ -18,7 +18,7 @@ shinyServer(function(input, output) {
 
                 })
                 
-                output$table1 <- DT::renderDataTable(sqlOutput1(), server=TRUE, rownames=FALSE, filter="top", options=list(pageLength=10))
+                output$table1 <- DT::renderDataTable(sqlOutput1(), server=TRUE, rownames=TRUE, filter="top", options=list(pageLength=10))
                 
                 output$download1 <- downloadHandler("SWApp.txt", content = function(file) {
                                            rows <- input$table1_rows_all
@@ -37,7 +37,7 @@ shinyServer(function(input, output) {
 
                 })
                 
-                output$table2 <- DT::renderDataTable(sqlOutput2(), server=TRUE, rownames=FALSE, filter="top", options=list(pageLength=10))
+                output$table2 <- DT::renderDataTable(sqlOutput2(), server=TRUE, rownames=TRUE, filter="top", options=list(pageLength=10))
                 
                 output$download2 <- downloadHandler("SWApp.txt", content = function(file) {
                                            rows <- input$table2_rows_all
