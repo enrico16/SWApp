@@ -44,9 +44,4 @@ shinyServer(function(input, output) {
                                            write.table(sqlOutput2()[rows, ], file, sep="\t", quote=FALSE, col.names=TRUE, row.names=FALSE)
                 })
 
-                output$x = renderPrint({
-                    cat('\n\nAll rows:\n\n')
-                    cat(input$table1_rows_all, sep = ', ')
-                })
-
 })

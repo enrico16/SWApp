@@ -63,8 +63,7 @@ shinyUI(
 
                               tabPanel("Best LD",
                                        DT::dataTableOutput("table1"),
-                                       downloadButton("download1", "Download"),
-                                       verbatimTextOutput('x')),
+                                       downloadButton("download1", "Download")),
 
                               tabPanel("Gene MeSH",
                                        DT::dataTableOutput("table2"),
