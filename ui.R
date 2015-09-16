@@ -43,9 +43,6 @@ shinyUI(
                         max = 100,
                         value = c(1, 10)),
             
-            submitButton("Submit"),
-            
-            br(),
             br(),
             
             p("SWApp is developed by",
