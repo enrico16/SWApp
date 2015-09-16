@@ -9,7 +9,7 @@ shinyServer(function(input, output) {
                 # STOPGAP
                 sqlOutput1 <- reactive({
                     
-                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.swapp",
+                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp",
                                       " where PValue < ", input$pvalue,
                                       " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
                                       " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
@@ -28,7 +28,7 @@ shinyServer(function(input, output) {
                 # STOPGAP Best LD
                 sqlOutput2 <- reactive({
                     
-                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.swappbestld",
+                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swappbestld",
                                       " where PValue < ", input$pvalue,
                                       " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
                                       " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
@@ -47,7 +47,7 @@ shinyServer(function(input, output) {
                 # STOPGAP Gene MeSH
                 sqlOutput3 <- reactive({
                     
-                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp.swappgenemesh",
+                    sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swappgenemesh",
                                       " where PValue < ", input$pvalue,
                                       " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
                                       " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
