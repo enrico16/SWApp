@@ -11,9 +11,9 @@ create table swapp (
 	SNP varchar(50) not null,
 	Trait varchar(250) not null,
 	PValue double not null,
-    GeneScore integer not null,
-    GeneRank integer not null,
-    PubMedID integer not null,
+	GeneScore integer not null,
+	GeneRank integer not null,
+	PubMedID integer not null,
 	primary key (ID)
 ) engine = innodb;
 
@@ -31,9 +31,9 @@ create table swappbestld (
 	SNP varchar(50) not null,
 	Trait varchar(250) not null,
 	PValue double not null,
-    GeneScore integer not null,
-    GeneRank integer not null,
-    PubMedID integer not null,
+	GeneScore integer not null,
+	GeneRank integer not null,
+	PubMedID integer not null,
 	primary key (ID)
 ) engine = innodb;
 
@@ -51,9 +51,9 @@ create table swappgenemesh (
 	SNP varchar(50) not null,
 	Trait varchar(250) not null,
 	PValue double not null,
-    GeneScore integer not null,
-    GeneRank integer not null,
-    PubMedID integer not null,
+	GeneScore integer not null,
+	GeneRank integer not null,
+	PubMedID integer not null,
 	primary key (ID)
 ) engine = innodb;
 
