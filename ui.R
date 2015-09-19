@@ -58,7 +58,7 @@ shinyUI(
 
 				  tabsetPanel(
 
-							  tabPanel("STOPGAP",
+							  tabPanel("STOPGAP Gene MeSH",
 									   DT::dataTableOutput("table1"),
 									   downloadButton("download1", "Download")),
 
@@ -66,7 +66,7 @@ shinyUI(
 									   DT::dataTableOutput("table2"),
 									   downloadButton("download2", "Download")),
 
-							  tabPanel("STOPGAP Gene MeSH",
+							  tabPanel("STOPGAP",
 									   DT::dataTableOutput("table3"),
 									   downloadButton("download3", "Download"))
 
