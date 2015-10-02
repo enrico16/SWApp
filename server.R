@@ -2,7 +2,7 @@ library(shiny)
 library(DT)
 library(RMySQL)
 
-con <- dbConnect(MySQL(), user="ef884766", host="localhost", dbname="swapp")
+con <- dbConnect(MySQL(), user="ubuntu", host="localhost", dbname="swapp")
 toDisplay <- c("Gene", "SNP", "Trait", "PValue", "GeneScore", "GeneRank", "PubMedLink")
 toDownload <- c("Gene", "SNP", "Trait", "PValue", "GeneScore", "GeneRank", "PubMedID")
 
