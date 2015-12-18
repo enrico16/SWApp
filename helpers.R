@@ -1,9 +1,6 @@
 library(dplyr)
 
 ## read data
-#stopgap <- readRDS("data/stopgap.rds")
-#stopgap.bestld <- readRDS("data/stopgap.bestld.rds")
-#stopgap.gene.mesh <- readRDS("data/stopgap.gene.mesh.rds")
 stopgap <- read.delim("data/stopgap.txt", na.strings=c(NA, ""))
 stopgap.bestld <- read.delim("data/stopgap.bestld.txt", na.strings=c(NA, ""))
 stopgap.gene.mesh <- read.delim("data/stopgap.gene.mesh.txt", na.strings=c(NA, ""))
@@ -11,34 +8,28 @@ stopgap.gene.mesh <- read.delim("data/stopgap.gene.mesh.txt", na.strings=c(NA, "
 ## process data
 # STOPGAP
 swapp <- stopgap %>%
-	select(gene, msh, snp.ld, pvalue, gene.score, gene.rank.min, pubmedid) %>%
-	rename(Gene=gene, Trait=msh, SNP=snp.ld, PValue=pvalue, GeneScore=gene.score, GeneRank=gene.rank.min, PubMedID=pubmedid) %>%
-	group_by(Gene, SNP, Trait, PubMedID) %>%
-	#summarise(PValue=median(PValue), GeneScore=median(GeneScore), GeneRank=median(GeneRank)) %>%
-	summarise(PValue=median(PValue) * 1.0, GeneScore=median(GeneScore) * 1.0, GeneRank=median(GeneRank) * 1.0) %>%
-	select(Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID) %>%
+	select(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
+	group_by(gene, snp.ld, msh, gene.best, evidence, evidence.best, pubmedid) %>%
+	summarise(pvalue=median(pvalue) * 1.0, gene.score=median(gene.score) * 1.0, gene.rank.min=median(gene.rank.min) * 1.0) %>%
+	select(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
     na.omit %>%
 	distinct
 
 # STOPGAP Best LD
 swapp.bestld <- stopgap.bestld %>%
-	select(gene, msh, snp.ld, pvalue, gene.score, gene.rank.min, pubmedid) %>%
-	rename(Gene=gene, Trait=msh, SNP=snp.ld, PValue=pvalue, GeneScore=gene.score, GeneRank=gene.rank.min, PubMedID=pubmedid) %>%
-	group_by(Gene, SNP, Trait, PubMedID) %>%
-	#summarise(PValue=median(PValue), GeneScore=median(GeneScore), GeneRank=median(GeneRank)) %>%
-	summarise(PValue=median(PValue) * 1.0, GeneScore=median(GeneScore) * 1.0, GeneRank=median(GeneRank) * 1.0) %>%
-	select(Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID) %>%
+	select(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
+	group_by(gene, snp.ld, msh, gene.best, evidence, evidence.best, pubmedid) %>%
+	summarise(pvalue=median(pvalue) * 1.0, gene.score=median(gene.score) * 1.0, gene.rank.min=median(gene.rank.min) * 1.0) %>%
+	select(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
     na.omit %>%
 	distinct
 
 # STOPGAP Gene MeSH
 swapp.gene.mesh <- stopgap.gene.mesh %>%
-	select(gene, msh, snp.ld, pvalue, gene.score, gene.rank.min, pubmedid) %>%
-	rename(Gene=gene, Trait=msh, SNP=snp.ld, PValue=pvalue, GeneScore=gene.score, GeneRank=gene.rank.min, PubMedID=pubmedid) %>%
-	group_by(Gene, SNP, Trait, PubMedID) %>%
-	#summarise(PValue=median(PValue), GeneScore=median(GeneScore), GeneRank=median(GeneRank)) %>%
-	summarise(PValue=median(PValue) * 1.0, GeneScore=median(GeneScore) * 1.0, GeneRank=median(GeneRank) * 1.0) %>%
-	select(Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID) %>%
+	select(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
+	group_by(gene, snp.ld, msh, gene.best, evidence, evidence.best, pubmedid) %>%
+	summarise(pvalue=median(pvalue) * 1.0, gene.score=median(gene.score) * 1.0, gene.rank.min=median(gene.rank.min) * 1.0) %>%
+	select(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
     na.omit %>%
 	distinct
 

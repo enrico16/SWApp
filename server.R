@@ -3,21 +3,21 @@ library(DT)
 library(RMySQL)
 
 con <- dbConnect(MySQL(), user="ef884766", host="localhost", dbname="swapp")
-toDisplay <- c("Gene", "SNP", "Trait", "PValue", "GeneScore", "GeneRank", "PubMedLink")
-toDownload <- c("Gene", "SNP", "Trait", "PValue", "GeneScore", "GeneRank", "PubMedID")
+toDisplay <- c("gene", "snp.ld", "msh", "pvalue", "gene.score", "gene.rank.min", "evidence", "gene.best", "evidence.best", "pubmedlink")
+toDownload <- c("gene", "snp.ld", "msh", "pvalue", "gene.score", "gene.rank.min", "evidence", "gene.best", "evidence.best", "pubmedid")
 
 shinyServer(function(input, output) {
 				
-				# STOPGAP Gene MeSH
+				# STOPGAP gene MeSH
 				sqlOutput1 <- reactive({
 					
-					sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swappgenemesh",
-									  " where PValue < ", input$pvalue,
-									  " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
-									  " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
+					sqlCode <- paste0("select gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid from swapp.gene.mesh",
+									  " where pvalue < ", input$pvalue,
+									  " and gene.rank.min >= ", input$gene.rank.min[1], " and gene.rank.min <= ", input$gene.rank.min[2],
+									  " and gene.score >= ", input$gene.score[1], " and gene.score <= ", input$gene.score[2],
 									  ";")
 					sqlOutput <- dbGetQuery(con, sqlCode)
-                    sqlOutput$PubMedLink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$PubMedID, "'>", sqlOutput$PubMedID, "</a>")
+                    sqlOutput$pubmedlink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
                     return(sqlOutput)
 
 				})
@@ -32,13 +32,13 @@ shinyServer(function(input, output) {
 				# STOPGAP Best LD
 				sqlOutput2 <- reactive({
 					
-					sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swappbestld",
-									  " where PValue < ", input$pvalue,
-									  " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
-									  " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
+					sqlCode <- paste0("select gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid from swapp.bestld",
+									  " where pvalue < ", input$pvalue,
+									  " and gene.rank.min >= ", input$gene.rank.min[1], " and gene.rank.min <= ", input$gene.rank.min[2],
+									  " and gene.score >= ", input$gene.score[1], " and gene.score <= ", input$gene.score[2],
 									  ";")
 					sqlOutput <- dbGetQuery(con, sqlCode)
-                    sqlOutput$PubMedLink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$PubMedID, "'>", sqlOutput$PubMedID, "</a>")
+                    sqlOutput$pubmedlink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
                     return(sqlOutput)
 
 				})
@@ -54,13 +54,13 @@ shinyServer(function(input, output) {
 				# STOPGAP
 				sqlOutput3 <- reactive({
 					
-					sqlCode <- paste0("select Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID from swapp",
-									  " where PValue < ", input$pvalue,
-									  " and GeneRank >= ", input$generank[1], " and GeneRank <= ", input$generank[2],
-									  " and GeneScore >= ", input$genescore[1], " and GeneScore <= ", input$genescore[2],
+					sqlCode <- paste0("select gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid from swapp",
+									  " where pvalue < ", input$pvalue,
+									  " and gene.rank.min >= ", input$gene.rank.min[1], " and gene.rank.min <= ", input$gene.rank.min[2],
+									  " and gene.score >= ", input$gene.score[1], " and gene.score <= ", input$gene.score[2],
 									  ";")
 					sqlOutput <- dbGetQuery(con, sqlCode)
-                    sqlOutput$PubMedLink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$PubMedID, "'>", sqlOutput$PubMedID, "</a>")
+                    sqlOutput$pubmedlink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
                     return(sqlOutput)
 
 				})

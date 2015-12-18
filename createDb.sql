@@ -6,58 +6,67 @@ use swapp;
 drop table if exists swapp;
 
 create table swapp (
-	ID integer not null auto_increment,
-	Gene varchar(50) not null,
-	SNP varchar(50) not null,
-	Trait varchar(250) not null,
-	PValue double not null,
-	GeneScore integer not null,
-	GeneRank integer not null,
-	PubMedID integer not null,
-	primary key (ID)
+	id integer not null auto_increment,
+	gene varchar(50) not null,
+	snp.ld varchar(50) not null,
+	msh varchar(250) not null,
+	pvalue double not null,
+	gene.score integer not null,
+	gene.rank.min integer not null,
+	evidence varchar(50) not null,
+    gene.best varchar(50) not null,
+    evidence.best varchar(50) not null,
+	pubmedid integer not null,
+	primary key (id)
 ) engine = innodb;
 
 load data local infile 'data/swapp.txt'
 into table swapp
 ignore 1 lines
-(Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID);
+(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid);
 
 # STOPGAP Best LD
-drop table if exists swappbestld;
+drop table if exists swapp.bestld;
 
-create table swappbestld (
-	ID integer not null auto_increment,
-	Gene varchar(50) not null,
-	SNP varchar(50) not null,
-	Trait varchar(250) not null,
-	PValue double not null,
-	GeneScore integer not null,
-	GeneRank integer not null,
-	PubMedID integer not null,
-	primary key (ID)
+create table swapp.bestld (
+	id integer not null auto_increment,
+	gene varchar(50) not null,
+	snp.ld varchar(50) not null,
+	msh varchar(250) not null,
+	pvalue double not null,
+	gene.score integer not null,
+	gene.rank.min integer not null,
+	evidence varchar(50) not null,
+    gene.best varchar(50) not null,
+    evidence.best varchar(50) not null,
+	pubmedid integer not null,
+	primary key (id)
 ) engine = innodb;
 
 load data local infile 'data/swapp.bestld.txt'
-into table swappbestld
+into table swapp.bestld
 ignore 1 lines
-(Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID);
+(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid);
 
-# STOPGAP Gene MeSH
-drop table if exists swappgenemesh;
+# STOPGAP gene MeSH
+drop table if exists swapp.gene.mesh;
 
-create table swappgenemesh (
-	ID integer not null auto_increment,
-	Gene varchar(50) not null,
-	SNP varchar(50) not null,
-	Trait varchar(250) not null,
-	PValue double not null,
-	GeneScore integer not null,
-	GeneRank integer not null,
-	PubMedID integer not null,
-	primary key (ID)
+create table swapp.gene.mesh (
+	id integer not null auto_increment,
+	gene varchar(50) not null,
+	snp.ld varchar(50) not null,
+	msh varchar(250) not null,
+	pvalue double not null,
+	gene.score integer not null,
+	gene.rank.min integer not null,
+	evidence varchar(50) not null,
+    gene.best varchar(50) not null,
+    evidence.best varchar(50) not null,
+	pubmedid integer not null,
+	primary key (id)
 ) engine = innodb;
 
 load data local infile 'data/swapp.gene.mesh.txt'
-into table swappgenemesh
+into table swapp.gene.mesh
 ignore 1 lines
-(Gene, SNP, Trait, PValue, GeneScore, GeneRank, PubMedID);
+(gene, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid);
