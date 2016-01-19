@@ -32,13 +32,13 @@ shinyUI(
 						selected=1e-8),
 			
 			sliderInput("gene.score",
-						"gene.score:",
+						"gene_score:",
 						min = 0,
 						max = 20,
 						value = c(5, 20)),
 			
 			sliderInput("gene.rank.min",
-						"gene.rank.min:",
+						"gene_rank_min:",
 						min = 1,
 						max = 100,
 						value = c(1, 10)),
@@ -58,7 +58,7 @@ shinyUI(
 
 				  tabsetPanel(
 
-							  tabPanel("stopgap",
+							  tabPanel("stopgap.gene.mesh",
 									   DT::dataTableOutput("table1"),
 									   downloadButton("download1", "Download")),
 
@@ -66,7 +66,7 @@ shinyUI(
 									   DT::dataTableOutput("table2"),
 									   downloadButton("download2", "Download")),
 
-							  tabPanel("stopgap.gene.mesh",
+							  tabPanel("stopgap",
 									   DT::dataTableOutput("table3"),
 									   downloadButton("download3", "Download"))
 
