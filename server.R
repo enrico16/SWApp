@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
 
 				})
 				
-				output$table1 <- DT::renderDataTable(sqlOutput1()[toDisplay], server=TRUE, rownames=TRUE, escape=FALSE, filter="top", options=list(pageLength=10))
+				output$table1 <- DT::renderDataTable(sqlOutput1()[toDisplay], server=TRUE, rownames=FALSE, escape=FALSE, filter="top", options=list(pageLength=10))
 				
 				output$download1 <- downloadHandler("SWApp.csv", content = function(file) {
 										   rows <- input$table1_rows_all
@@ -43,7 +43,7 @@ shinyServer(function(input, output) {
 
 				})
 				
-				output$table2 <- DT::renderDataTable(sqlOutput2()[toDisplay], server=TRUE, rownames=TRUE, escape=FALSE, filter="top", options=list(pageLength=10))
+				output$table2 <- DT::renderDataTable(sqlOutput2()[toDisplay], server=TRUE, rownames=FALSE, escape=FALSE, filter="top", options=list(pageLength=10))
 				
 				output$download2 <- downloadHandler("SWApp.csv", content = function(file) {
 										   rows <- input$table2_rows_all
@@ -65,7 +65,7 @@ shinyServer(function(input, output) {
 
 				})
 				
-				output$table3 <- DT::renderDataTable(sqlOutput3()[toDisplay], server=TRUE, rownames=TRUE, escape=FALSE, filter="top", options=list(pageLength=10))
+				output$table3 <- DT::renderDataTable(sqlOutput3()[toDisplay], server=TRUE, rownames=FALSE, escape=FALSE, filter="top", options=list(pageLength=10))
 				
 				output$download3 <- downloadHandler("SWApp.csv", content = function(file) {
 										   rows <- input$table3_rows_all
