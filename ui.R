@@ -8,12 +8,11 @@ shinyUI(
 	sidebarLayout(
 		sidebarPanel(width=3,
 
-					 h1(strong("SWApp")),
+					 h1(strong("SWApp 2.3")),
+
 					 h3(strong("STOPGAP Web App")),
 					 
-					 p(strong("SWApp"), "is a simple web application that makes using and querying",
-					   a(strong("STOPGAP"), href="https://connect.gsk.com/sites/genetics/GeneticsWIKI/Wiki%20Pages/STOPGAP2.aspx"),
-					   "easier."),
+					 p(strong("SWApp"), "is a simple web application that makes using and querying", strong("STOPGAP"), "easier."),
 					 
 			br(),
 			
@@ -44,15 +43,27 @@ shinyUI(
 						value = c(1, 10)),
 			
 			br(),
-			
-			p("SWApp is developed by",
-			  a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
-			  "using",
-			  a(strong("Shiny"), href="http://shiny.rstudio.com/")),
-			
-			p("STOPGAP is developed by",
-			  a(strong("Matt Nelson"), href="mailto:matthew.r.nelson@gsk.com"))
-		),
+
+            h4(strong("Info:")),
+
+            tags$ul(
+                    tags$li("SWApp 2.3 uses the STOPGAP 2.3 data."),
+
+                    tags$li("Please refer to the",
+                            a(strong("STOPGAP"), href="https://connect.gsk.com/sites/genetics/GeneticsWIKI/Wiki%20Pages/STOPGAP2.aspx"),
+                            "wiki page for information on the datasets, column names and evidence types."),
+
+                    tags$li("SWApp is developed by",
+                            a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
+                            "using",
+                            a(strong("Shiny."), href="http://shiny.rstudio.com/")),
+
+                    tags$li("STOPGAP is developed by",
+                            a(strong("Matt Nelson"), href="mailto:matthew.r.nelson@gsk.com"),
+                            "and",
+                            a(strong("Kijoung Song."), href="mailto:kijoung.2.song@gsk.com"))
+		)
+            ),
 		
 		mainPanel(
 
