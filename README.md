@@ -1,3 +1,2 @@
 # SWApp
-**S**TOPGAP **W**eb **App**lication
-
+**S**TOPGAP **W**eb **App**
