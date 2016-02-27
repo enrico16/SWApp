@@ -56,7 +56,9 @@ shinyUI(
                     tags$li("SWApp is developed by",
                             a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
                             "using",
-                            a(strong("Shiny."), href="http://shiny.rstudio.com/")),
+                            a(strong("Shiny"), href="http://shiny.rstudio.com/"),
+                            "on",
+                            a(strong("GitHub."), href="https://github.com/enricoferrero/SWApp")),
 
                     tags$li("STOPGAP is developed by",
                             a(strong("Matt Nelson"), href="mailto:matthew.r.nelson@gsk.com"),
@@ -75,11 +77,12 @@ shinyUI(
 
 							  tabPanel("stopgap.bestld",
 									   DT::dataTableOutput("table2"),
-									   downloadButton("download2", "Download")),
-
-							  tabPanel("stopgap",
-									   DT::dataTableOutput("table3"),
-									   downloadButton("download3", "Download"))
+									   downloadButton("download2", "Download"))
+#									   downloadButton("download2", "Download")),
+#
+#							  tabPanel("stopgap",
+#									   DT::dataTableOutput("table3"),
+#									   downloadButton("download3", "Download"))
 
 							  )
 				  )
