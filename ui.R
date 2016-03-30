@@ -26,7 +26,7 @@ shinyUI(
 									   1e-8,
 									   1e-5,
                                        1e-4),
-						selected=0.05),
+						selected=1e-4),
 			
 			sliderInput("gene.score",
 						"gene_score:",
