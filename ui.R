@@ -8,7 +8,7 @@ shinyUI(
 	sidebarLayout(
 		sidebarPanel(width=3,
 
-					 h1(strong("SWApp 2.3")),
+					 h1(strong("SWApp 2.4")),
 
 					 h3(strong("STOPGAP Web App")),
 					 
@@ -28,26 +28,26 @@ shinyUI(
 									   0.001,
 									   0.01,
 									   0.05),
-						selected=1e-8),
+						selected=0.05),
 			
 			sliderInput("gene.score",
 						"gene_score:",
 						min = 0,
 						max = 20,
-						value = c(5, 20)),
+						value = c(0, 20)),
 			
 			sliderInput("gene.rank.min",
 						"gene_rank_min:",
 						min = 1,
 						max = 100,
-						value = c(1, 10)),
+						value = c(1, 100)),
 			
 			br(),
 
             h4(strong("Info:")),
 
             tags$ul(
-                    tags$li("SWApp 2.3 uses the STOPGAP 2.3 data."),
+                    tags$li("SWApp 2.4 uses the STOPGAP 2.4 data."),
 
                     tags$li("Please refer to the",
                             a(strong("STOPGAP"), href="https://connect.gsk.com/sites/genetics/GeneticsWIKI/Wiki%20Pages/STOPGAP2.aspx"),

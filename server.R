@@ -3,7 +3,7 @@ library(DT)
 library(RMySQL)
 
 con <- dbConnect(MySQL(), user="ubuntu", host="localhost", dbname="swapp")
-toDisplay <- c("gene", "snp_gwas", "snp_ld", "msh", "pvalue", "gene_score", "gene_rank_min", "evidence", "gene_best", "evidence_best", "pubmedlink")
+toDisplay <- c("gene", "snp_gwas", "snp_ld", "msh", "pvalue", "gene_score", "gene_rank_min", "evidence", "gene_best", "evidence_best", "pubmed_link")
 toDownload <- c("gene", "snp_gwas", "snp_ld", "msh", "pvalue", "gene_score", "gene_rank_min", "evidence", "gene_best", "evidence_best", "pubmedid")
 
 shinyServer(function(input, output) {
@@ -17,7 +17,7 @@ shinyServer(function(input, output) {
 									  " and gene_score >= ", input$gene.score[1], " and gene_score <= ", input$gene.score[2],
 									  ";")
 					sqlOutput <- dbGetQuery(con, sqlCode)
-                    sqlOutput$pubmedlink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
+                    sqlOutput$pubmed_link <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
                     return(sqlOutput)
 
 				})
@@ -38,7 +38,7 @@ shinyServer(function(input, output) {
 									  " and gene_score >= ", input$gene.score[1], " and gene_score <= ", input$gene.score[2],
 									  ";")
 					sqlOutput <- dbGetQuery(con, sqlCode)
-                    sqlOutput$pubmedlink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
+                    sqlOutput$pubmed_link <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
                     return(sqlOutput)
 
 				})
@@ -60,7 +60,7 @@ shinyServer(function(input, output) {
 #									  " and gene_score >= ", input$gene.score[1], " and gene_score <= ", input$gene.score[2],
 #									  ";")
 #					sqlOutput <- dbGetQuery(con, sqlCode)
-#                    sqlOutput$pubmedlink <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
+#                    sqlOutput$pubmed_link <- paste0("<a href='http://www.ncbi.nlm.nih.gov/pubmed/", sqlOutput$pubmedid, "'>", sqlOutput$pubmedid, "</a>")
 #                    return(sqlOutput)
 #
 #				})
