@@ -8,7 +8,7 @@ shinyUI(
 	sidebarLayout(
 		sidebarPanel(width=3,
 
-					 h1(strong("SWApp 2.4")),
+					 h1(strong("SWApp 2.4.1")),
 
 					 h3(strong("STOPGAP Web App")),
 					 
@@ -45,7 +45,7 @@ shinyUI(
             h4(strong("Info:")),
 
             tags$ul(
-                    tags$li("SWApp 2.4 uses the STOPGAP 2.4 data."),
+                    tags$li("SWApp 2.4.1 uses the STOPGAP 2.4.1 data."),
 
                     tags$li("Please refer to the",
                             a(strong("STOPGAP"), href="https://connect.gsk.com/sites/genetics/GeneticsWIKI/Wiki%20Pages/STOPGAP2.aspx"),
