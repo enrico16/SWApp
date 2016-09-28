@@ -11,6 +11,7 @@ stopgap.gene.mesh <- read.delim("data/stopgap.gene.mesh.txt", na.strings=c(NA, "
 #	select(gene, snp.gwas, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
 #	group_by(gene, snp.gwas, snp.ld, msh, gene.best, evidence, evidence.best, pubmedid) %>%
 #	summarise(pvalue=median(pvalue) * 1.0, gene.score=median(gene.score) * 1.0, gene.rank.min=median(gene.rank.min) * 1.0) %>%
+#   ungroup %>%
 #	select(gene, snp.gwas, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
 #	distinct
 
@@ -19,6 +20,7 @@ swapp.bestld <- stopgap.bestld %>%
 	select(gene, snp.gwas, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
 	group_by(gene, snp.gwas, snp.ld, msh, gene.best, evidence, evidence.best, pubmedid) %>%
 	summarise(pvalue=median(pvalue) * 1.0, gene.score=median(gene.score) * 1.0, gene.rank.min=median(gene.rank.min) * 1.0) %>%
+    ungroup %>%
 	select(gene, snp.gwas, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
 	distinct
 
@@ -26,7 +28,8 @@ swapp.bestld <- stopgap.bestld %>%
 swapp.gene.mesh <- stopgap.gene.mesh %>%
 	select(gene, snp.gwas, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
 	group_by(gene, snp.gwas, snp.ld, msh, gene.best, evidence, evidence.best, pubmedid) %>%
-	summarise(pvalue=median(pvalue) * 1.0, gene.score=median(gene.score) * 1.0, gene.rank.min=median(gene.rank.min) * 1.0) %>%
+	summarise(pvalue=median(pvalue), gene.score=median(gene.score), gene.rank.min=median(gene.rank.min)) %>%
+    ungroup %>%
 	select(gene, snp.gwas, snp.ld, msh, pvalue, gene.score, gene.rank.min, evidence, gene.best, evidence.best, pubmedid) %>%
 	distinct
 
