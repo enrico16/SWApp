@@ -8,7 +8,7 @@ shinyUI(
 	sidebarLayout(
 		sidebarPanel(width=3,
 
-					 h1(strong("SWApp 2.5.1")),
+					 h1(strong("SWApp")),
 
 					 h3(strong("STOPGAP Web App")),
 					 
@@ -45,23 +45,29 @@ shinyUI(
             h4(strong("Info:")),
 
             tags$ul(
-                    tags$li("SWApp 2.5.1 uses the STOPGAP 2.5.1 data."),
+                    tags$li("SWApp uses version 2.5.1 of the STOPGAP data."),
 
-                    tags$li("Please refer to the",
-                            a(strong("STOPGAP"), href="https://connect.gsk.com/sites/genetics/GeneticsWIKI/Wiki%20Pages/STOPGAP2.aspx"),
-                            "wiki page for information on the datasets, column names and evidence types."),
+                    tags$li("Please refer to the STOPGAP",
+                            a(strong("README"), href="https://github.com/StatGenPRD/STOPGAP/blob/master/README.md"),
+                            "on GitHub for information on the datasets, column names and evidence types."),
+
+
+                    tags$li("STOPGAP is developed by",
+                            a(strong("Judong Shen,"), href="mailto:judong.shen@merck.com"),
+                            a(strong("Kijoung Song,"), href="mailto:kijoung.2.song@gsk.com"),
+                            a(strong("Andrew Slater,"), href="mailto:AndrewSlater1@outlook.com"),
+                            a(strong("Enrico Ferrero,"), href="mailto:enrico.x.ferrero@gsk.com"),
+                            "and",
+                            a(strong("Matt Nelson."), href="mailto:matthew.r.nelson@gsk.com"),
+                            "Source code is available on",
+                            a(strong("GitHub."), href="https://github.com/StatGenPRD")),
 
                     tags$li("SWApp is developed by",
                             a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
                             "using",
-                            a(strong("Shiny"), href="http://shiny.rstudio.com/"),
-                            "on",
+                            a(strong("Shiny."), href="http://shiny.rstudio.com/"),
+                            "Source code is available on",
                             a(strong("GitHub."), href="https://github.com/enricoferrero/SWApp")),
-
-                    tags$li("STOPGAP is developed by",
-                            a(strong("Matt Nelson"), href="mailto:matthew.r.nelson@gsk.com"),
-                            "and",
-                            a(strong("Kijoung Song."), href="mailto:kijoung.2.song@gsk.com"))
 		)
             ),
 		
