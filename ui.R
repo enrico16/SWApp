@@ -31,7 +31,7 @@ shinyUI(
 			sliderInput("gene.score",
 						"gene_score:",
 						min = 0,
-						max = 20,
+						max = 12,
 						value = c(5, 12)),
 			
 			sliderInput("gene.rank.min",
