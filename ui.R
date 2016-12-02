@@ -26,19 +26,19 @@ shinyUI(
 									   1e-8,
 									   1e-5,
                                        1e-4),
-						selected=1e-4),
+						selected=1e-8),
 			
 			sliderInput("gene.score",
 						"gene_score:",
 						min = 0,
 						max = 20,
-						value = c(0, 20)),
+						value = c(5, 12)),
 			
 			sliderInput("gene.rank.min",
 						"gene_rank_min:",
 						min = 1,
 						max = 100,
-						value = c(1, 100)),
+						value = c(1, 10)),
 			
 			br(),
 
@@ -67,7 +67,7 @@ shinyUI(
                             "using",
                             a(strong("Shiny."), href="http://shiny.rstudio.com/"),
                             "Source code is available on",
-                            a(strong("GitHub."), href="https://github.com/enricoferrero/SWApp")),
+                            a(strong("GitHub."), href="https://github.com/enricoferrero/SWApp"))
 		)
             ),
 		
