@@ -60,7 +60,7 @@ shinyUI(
                             "and",
                             a(strong("Matt Nelson."), href="mailto:matthew.r.nelson@gsk.com"),
                             "Source code is available on",
-                            a(strong("GitHub."), href="https://github.com/StatGenPRD")),
+                            a(strong("GitHub."), href="https://github.com/StatGenPRD/STOPGAP")),
 
                     tags$li("SWApp is developed by",
                             a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
