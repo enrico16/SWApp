@@ -12,7 +12,7 @@ shinyUI(
 
 					 h3(strong("STOPGAP Web App")),
 					 
-					 p(strong("SWApp"), "is a simple web application that makes using and querying", strong("STOPGAP"), "easier."),
+					 p(strong("SWApp"), "is a simple web application for querying", strong("STOPGAP.")),
 					 
 			br(),
 			
