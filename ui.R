@@ -56,7 +56,7 @@ shinyUI(
                             a(strong("Judong Shen,"), href="mailto:judong.shen@merck.com"),
                             a(strong("Kijoung Song,"), href="mailto:kijoung.2.song@gsk.com"),
                             a(strong("Andrew Slater,"), href="mailto:AndrewSlater1@outlook.com"),
-                            a(strong("Enrico Ferrero,"), href="mailto:enrico.x.ferrero@gsk.com"),
+                            a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
                             "and",
                             a(strong("Matt Nelson."), href="mailto:matthew.r.nelson@gsk.com"),
                             "Source code is available on",
