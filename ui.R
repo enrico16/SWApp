@@ -48,26 +48,18 @@ shinyUI(
                     tags$li("SWApp uses version 2.5.1 of the STOPGAP data."),
 
                     tags$li("Please refer to the STOPGAP",
-                            a(strong("README"), href="https://github.com/StatGenPRD/STOPGAP/blob/master/README.md"),
+                            a("README", href="https://github.com/StatGenPRD/STOPGAP/blob/master/README.md"),
                             "on GitHub for information on the datasets, column names and evidence types."),
 
 
-                    tags$li("STOPGAP is developed by",
-                            a(strong("Judong Shen,"), href="mailto:judong.shen@merck.com"),
-                            a(strong("Kijoung Song,"), href="mailto:kijoung.2.song@gsk.com"),
-                            a(strong("Andrew Slater,"), href="mailto:AndrewSlater1@outlook.com"),
-                            a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
-                            "and",
-                            a(strong("Matt Nelson."), href="mailto:matthew.r.nelson@gsk.com"),
-                            "Source code is available on",
-                            a(strong("GitHub."), href="https://github.com/StatGenPRD/STOPGAP")),
+                    tags$li("STOPGAP is developed by Judong Shen, Kijoung Song, Andrew Slater, Enrico Ferrero and Matt Nelson.",
+                            "Source code and issue tracker are available on",
+                            a("GitHub.", href="https://github.com/StatGenPRD/STOPGAP")),
 
-                    tags$li("SWApp is developed by",
-                            a(strong("Enrico Ferrero"), href="mailto:enrico.x.ferrero@gsk.com"),
-                            "using",
-                            a(strong("Shiny."), href="http://shiny.rstudio.com/"),
-                            "Source code is available on",
-                            a(strong("GitHub."), href="https://github.com/enricoferrero/SWApp"))
+                    tags$li("SWApp is developed by Enrico Ferrero using",
+                            a("Shiny.", href="http://shiny.rstudio.com/"),
+                            "Source code and issue tracker are available on",
+                            a("GitHub.", href="https://github.com/enricoferrero/SWApp"))
 		)
             ),
 		
@@ -82,11 +74,6 @@ shinyUI(
 							  tabPanel("stopgap.bestld",
 									   DT::dataTableOutput("table2"),
 									   downloadButton("download2", "Download"))
-#									   downloadButton("download2", "Download")),
-#
-#							  tabPanel("stopgap",
-#									   DT::dataTableOutput("table3"),
-#									   downloadButton("download3", "Download"))
 
 							  )
 				  )
