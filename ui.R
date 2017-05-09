@@ -47,10 +47,11 @@ shinyUI(
             tags$ul(
                     tags$li("SWApp uses version 2.5.1 of the STOPGAP data."),
 
-                    tags$li("Please refer to the STOPGAP",
-                            a("README", href="https://github.com/StatGenPRD/STOPGAP/blob/master/README.md"),
-                            "on GitHub for information on the datasets, column names and evidence types."),
-
+                    tags$li("Please refer to our",
+                            a("Bioinformatics paper", href="https://doi.org/10.1093/bioinformatics/btx274"),
+                            "for details about the resource and to the",
+                            a("STOPGAP README", href="https://github.com/StatGenPRD/STOPGAP/blob/master/README.md"),
+                            "for information on the datasets, column names and evidence types."),
 
                     tags$li("STOPGAP is developed by Judong Shen, Kijoung Song, Andrew Slater, Enrico Ferrero and Matt Nelson.",
                             "Source code and issue tracker are available on",
